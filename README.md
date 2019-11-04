@@ -3,6 +3,11 @@ __Generate a file index for Github Pages__
 
 ![img](https://i.imgur.com/jyZPglj.png)
 
+### Quick install
+```sh
+curl https://raw.githubusercontent.com/jayanta525/apindex/master/install.sh | bash
+```
+
 ### What is this?
 This is a program that generates `index.html` files in each directory on your server that render the file tree. This is useful for static web servers that need support for file listing. One example of this is Github Pages.
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <icons>
-    
+
     <icon file="ar.png">
         <ex>ar</ex>
         <ex>zip</ex>
@@ -33,6 +33,7 @@
 
     <icon file="patch.png">
         <ex>patch</ex>
+        <ex>diff</ex>
     </icon>
 
     <icon file="pdf.png">

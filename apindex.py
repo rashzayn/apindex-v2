@@ -37,10 +37,12 @@ import time
 VERSION = "@CPACK_PACKAGE_VERSION_MAJOR@.@CPACK_PACKAGE_VERSION_MINOR@"
 PREFIX = "@CMAKE_INSTALL_PREFIX@"
 
+
 class Icon:
     def __init__(self, file):
         self.file = file
         self.extensions = []
+
 
 class ResourceManager:
 
@@ -114,9 +116,10 @@ class File:
         if self.isDir():
             fileSize = "-"
         else:
-            fileSize = str(math.floor(os.path.getsize(self.getPath()) / 1000)) + " kB"
+            fileSize = str(math.floor(
+                os.path.getsize(self.getPath()) / 1000)) + " kB"
         modifyTime = time.strftime('%d-%b-%Y %H:%M',
-                        time.localtime(os.path.getmtime(self.getPath())))
+                                   time.localtime(os.path.getmtime(self.getPath())))
 
         return File.STATIC_FILE_HTML.replace("#FILENAME", self.filename) \
             .replace("#MODIFIED", modifyTime).replace("#SIZE", str(fileSize)) \
@@ -146,20 +149,23 @@ class File:
     def getParentDir(self):
         return self.root
 
+
 class IndexWriter:
 
     STATIC_FOOTER = ResourceManager.readFile("footer.template.html") \
         .replace("#VERSION", VERSION)
 
     @staticmethod
-    def writeIndex(startPath, title = None, footer=None):
+    def writeIndex(startPath, title=None, footer=None):
         filesRead = []
         dirsRead = []
         root = File(startPath)
         html = ResourceManager.readFile("index.template.html")
 
-        if title is None: title = root.getPathFromRoot()
-        if footer is None: footer = IndexWriter.STATIC_FOOTER
+        if title is None:
+            title = root.getPathFromRoot()
+        if footer is None:
+            footer = IndexWriter.STATIC_FOOTER
 
         # fill the details
         html = html.replace("#TITLE", title)
@@ -187,8 +193,9 @@ class IndexWriter:
         html = html.replace("#GEN_FILES", "".join(str(x) for x in filesRead))
 
         # write the actual index file
-        print("Writing " + root.getPath() + "/index.html" )
+        print("Writing " + root.getPath() + "/index.html")
         ResourceManager.writeFile(root.getPath() + "/index.html", html)
+
 
 def main():
     if len(sys.argv) <= 1:
@@ -197,5 +204,6 @@ def main():
 
     IndexWriter.writeIndex(sys.argv[1])
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
