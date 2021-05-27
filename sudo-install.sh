@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install cmake python3 -y
 git clone --depth=1 https://github.com/jayanta525/apindex.git
 cd apindex
-sudo cmake . -DCMAKE_INSTALL_PREFIX=/usr
+cmake . -DCMAKE_INSTALL_PREFIX=/usr
 sudo make install
 cd ..
 rm -rf apindex/
