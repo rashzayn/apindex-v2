@@ -56,7 +56,7 @@ Check it out here: [gitlab-ci.yml](https://gitlab.com/jayanta525/openwrt-sunxi/-
 
 This openwrt kmod download archive is hosted on GitLab Pages and its generated with apindex.
 
-Check it out: [https://jayanta525.gitlab.io/openwrt-sunxi/](https://jayanta525.gitlab.io/openwrt-sunxi/)
+Check it out: [https://jayanta525.gitlab.io/openwrt-rockpie/armv8/](https://jayanta525.gitlab.io/openwrt-rockpie/armv8/)
 
   
 
