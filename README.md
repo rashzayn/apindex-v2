@@ -32,8 +32,40 @@ The file icons are also embedded into the `index.html` file so there is no need 
 
 The install script can be used with CI/CD with the required dependencies.
 
+#### GitHub
+[deploy-to-gh-pages.yml](https://github.com/jayanta525/openwrt-r4s-kmods/blob/master/.github/workflows/deploy-to-gh-pages.yml)
 
-Check it out here: [gitlab-ci.yml](https://gitlab.com/jayanta525/openwrt-sunxi/-/blob/master/.gitlab-ci.yml)
+```
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false 
+
+      - name: Install and Build 🔧
+        run: |
+          sudo apt-get update
+          sudo apt-get install curl git -y
+          curl https://raw.githubusercontent.com/jayanta525/apindex-v2/master/sudo-install.sh | bash
+          apindex .
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: .
+```
+
+#### Gitlab
+[gitlab-ci.yml](https://gitlab.com/jayanta525/openwrt-sunxi/-/blob/master/.gitlab-ci.yml)
 
     image: ubuntu:bionic
     pages:
@@ -54,9 +86,10 @@ Check it out here: [gitlab-ci.yml](https://gitlab.com/jayanta525/openwrt-sunxi/-
 
 ### Demo
 
-This openwrt kmod download archive is hosted on GitLab Pages and its generated with apindex.
+This openwrt kmod download archive is hosted on GitHub/ GitLab Pages and its generated with apindex.
 
-Check it out: [https://jayanta525.gitlab.io/openwrt-rockpie/armv8/](https://jayanta525.gitlab.io/openwrt-rockpie/armv8/)
+- [https://jayanta525.github.io/openwrt-r4s-kmods/](https://jayanta525.github.io/openwrt-r4s-kmods/)
+- [https://jayanta525.gitlab.io/openwrt-rockpie/armv8/](https://jayanta525.gitlab.io/openwrt-rockpie/armv8/)
 
   
 
