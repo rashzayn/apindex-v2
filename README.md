@@ -10,7 +10,7 @@ __Generate a file index for GitHub/GitLab Pages__
 
 ```sh
 
-curl https://raw.githubusercontent.com/jayanta525/apindex/master/install.sh | bash
+curl https://raw.githubusercontent.com/jayanta525/apindex-v2/master/install.sh | bash
 
 ```
 
