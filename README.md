@@ -5,12 +5,41 @@ __Generate a file index for GitHub/GitLab Pages__
   
 ![enter image description here](https://i.imgur.com/m8aXfGu.png)
   
+### Use with Github Actions
+
+https://github.com/jayanta525/github-pages-directory-listing
+
+workflow.yml
+```
+name: gh-pages
+on: [push]
+
+jobs:
+  pages-directory-listing-index:
+    runs-on: ubuntu-latest
+    name: GH Pages Directory Listing
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Generate Directory Listings
+        uses: jayanta525/github-pages-directory-listing@v2.0.0
+        with:
+          FOLDER: data
+
+      - name: Deploy to Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: data
+```
 
 ### Quick install
 
 ```sh
 
-curl https://raw.githubusercontent.com/jayanta525/apindex-v2/master/install.sh | bash
+curl https://raw.githubusercontent.com/jayanta525/apindex-v2/master/sudo-install.sh | bash
 
 ```
 
@@ -73,7 +102,7 @@ jobs:
      - rm -rf .git*
      - apt-get update
      - apt-get install curl git -y
-     - curl https://raw.githubusercontent.com/jayanta525/apindex/master/install.sh | bash
+     - curl https://raw.githubusercontent.com/jayanta525/apindex-v2/master/sudo-install.sh | bash
      - apindex .
      - mkdir .public
      - cp -r * .public
