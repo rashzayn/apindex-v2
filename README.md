@@ -154,3 +154,8 @@ This renders __Index of /__.
 ### How do I add/remove icons?
 
 See `share/icons.xml` and the files under `share/img/*`.
+
+## Original credits to: 
+- https://github.com/libthinkpad/apindex
+- https://github.com/paperbenni/apindex
+
