@@ -1,3 +1,5 @@
+## This repo is archived, use the new github actions
+### https://github.com/marketplace/actions/github-pages-directory-listing
 
 # apindex - static file index generator/load reducer
 
